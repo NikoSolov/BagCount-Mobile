@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings_ip_not_set">IP не задан</string>
+    <string name="bottom_menu_info">Информация</string>
+    <string name="bottom_menu_scan">Сканировать</string>
+    <string name="bottom_menu_settings">Настройки</string>
+    <string name="info_fragment_filename">Имя файла</string>
+    <string name="info_fragment_getInformation">Получить информацию</string>
+    <string name="info_fragment_UploadDate">Дата загрузки</string>
+    <string name="info_fragment_videoDuration">Длительность видео</string>
+    <string name="info_fragment_handbagCount">Количество сумок</string>
+    <string name="info_fragment_suitcaseCount">Количество чемоданов</string>
+    <string name="info_fragment_backpackCount">Количество рюкзаков</string>
+    <string name="settings_app_language">Язык интерфейса</string>
+    <string name="settings_maxVideoLength">Максимальная длина видео</string>
+    <string name="settings_seconds">секунд</string>
+    <string name="settings_reset">Сброс настроек</string>
+    <string name="settings_resetDescription">Сбросить все настройки на их значения по умолчанию</string>
+    <string name="settings_ip">IP-адрес API</string>
+    <string name="scan_fragment_recordVideo">Записать видео</string>
+    <string name="scan_fragment_uploadFile">Загрузить файл</string>
+    <string name="scan_fragment_takePhoto">Сделать фото</string>
+</resources>

@@ -1,4 +1,4 @@
-package com.example.serverapp
+package com.nikosolov.bagscount
 
 data class ImageInfo(
     val id: String,

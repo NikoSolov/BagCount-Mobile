@@ -19,5 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ServerApp"
+rootProject.name = "BagsCount"
 include(":app")
+ 

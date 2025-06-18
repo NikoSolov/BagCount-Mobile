@@ -1,4 +1,4 @@
-package com.example.serverapp
+package com.nikosolov.bagscount
 
 import org.junit.Test
 

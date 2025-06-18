@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.serverapp"
+    namespace = "com.nikosolov.bagscount"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.serverapp"
+        applicationId = "com.nikosolov.bagscount"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
@@ -55,6 +55,8 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
     // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
