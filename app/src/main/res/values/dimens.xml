@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="buttonTextSize" type="dimen">20sp</item>
+    <item name="infoTextSize" type="dimen">18sp</item>
+    <item name="settingsPrimaryTextSize" type="dimen">18sp</item>
+    <item name="settingsSecondaryTextSize" type="dimen">14sp</item>
 </resources>

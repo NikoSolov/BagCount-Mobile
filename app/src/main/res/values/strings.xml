@@ -45,4 +45,5 @@
     <string name="info_video">Video</string>
     <string name="info_photo">Photo</string>
     <string name="scan_toast_videoLimits">Video length exceeds limits</string>
+    <string name="info_infoTv"><u>Scan Information</u></string>
 </resources>

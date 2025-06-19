@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:text="@string/scan_toast_fileNotChosen"
         android:textStyle="bold"
+        android:textSize="@dimen/infoTextSize"
         android:layout_marginBottom="8dp"/>
 
     <FrameLayout
@@ -46,9 +47,17 @@
         android:id="@+id/info_block"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:orientation="vertical"
-        android:paddingTop="16dp"
         android:visibility="gone">
+
+        <TextView
+            android:id="@+id/info_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/info_infoTv"
+            android:textSize="@dimen/infoTextSize"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/upload_date"
@@ -68,25 +77,29 @@
             android:id="@+id/handbags_count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Сумок: —" />
+            android:text="Сумок: —"
+            android:textSize="@dimen/infoTextSize" />
 
         <TextView
             android:id="@+id/suitcases_count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Чемоданов: —" />
+            android:text="Чемоданов: —"
+            android:textSize="@dimen/infoTextSize" />
 
         <TextView
             android:id="@+id/backpacks_count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Рюкзаков: —" />
+            android:text="Рюкзаков: —"
+            android:textSize="@dimen/infoTextSize" />
     </LinearLayout>
 
     <Button
         android:id="@+id/get_information"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="@dimen/infoTextSize"
         android:text="@string/info_fragment_getInformation" />
 
 </LinearLayout>

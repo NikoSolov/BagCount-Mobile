@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/settings_app_language"
-            android:textSize="16sp"
+            android:textSize="@dimen/settingsPrimaryTextSize"
             android:textAppearance="?attr/textAppearanceSubtitle1" />
 
         <TextView
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:text="@string/settings_current_language"
             android:paddingBottom="16dp"
-            android:textSize="12sp"
+            android:textSize="@dimen/settingsSecondaryTextSize"
             android:textAppearance="?attr/textAppearanceBody1" />
 
         <LinearLayout
@@ -34,7 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/settings_maxVideoLength"
-                android:textSize="16sp"
+                android:textSize="@dimen/settingsPrimaryTextSize"
                 android:textAppearance="?attr/textAppearanceSubtitle1" />
             <TextView
                 android:id="@+id/length_subtitle"
@@ -42,14 +42,14 @@
                 android:layout_height="wrap_content"
                 android:text="20"
                 android:paddingBottom="16dp"
-                android:textSize="12sp"
+                android:textSize="@dimen/settingsSecondaryTextSize"
                 android:textAppearance="?attr/textAppearanceBody1" />
         </LinearLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/settings_reset"
-            android:textSize="16sp"
+            android:textSize="@dimen/settingsPrimaryTextSize"
             android:textAppearance="?attr/textAppearanceSubtitle1" />
 
         <TextView
@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:text="@string/settings_resetDescription"
             android:paddingBottom="16dp"
-            android:textSize="12sp"
+            android:textSize="@dimen/settingsSecondaryTextSize"
             android:textAppearance="?attr/textAppearanceBody1" />
 
         <LinearLayout
@@ -69,7 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/settings_ip"
-                android:textSize="16sp"
+                android:textSize="@dimen/settingsPrimaryTextSize"
                 android:textAppearance="?attr/textAppearanceSubtitle1" />
 
             <!-- Здесь отображаем текущий IP (или подсказку, если не задан) -->
@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/settings_ip_not_set"
                 android:paddingBottom="8dp"
-                android:textSize="12sp"
+                android:textSize="@dimen/settingsSecondaryTextSize"
                 android:textAppearance="?attr/textAppearanceBody1" />
         </LinearLayout>
     </LinearLayout>
