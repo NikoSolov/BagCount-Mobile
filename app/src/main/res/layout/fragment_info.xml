@@ -11,13 +11,14 @@
         android:id="@+id/file_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/info_fragment_filename"
+        android:text="@string/scan_toast_fileNotChosen"
         android:textStyle="bold"
         android:layout_marginBottom="8dp"/>
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:layout_marginBottom="16dp"
         android:foregroundGravity="center"
         android:gravity="center">
@@ -29,22 +30,16 @@
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:layout_gravity="center"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
         <VideoView
             android:id="@+id/preview_video"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
     </FrameLayout>
-
-    <Button
-        android:id="@+id/get_information"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/info_fragment_getInformation"/>
 
 
     <LinearLayout
@@ -59,13 +54,15 @@
             android:id="@+id/upload_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Дата загрузки: —" />
+            android:text="Дата загрузки: —"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/file_length"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Длительность: —" />
+            android:text="Длительность: —"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/handbags_count"
@@ -85,5 +82,11 @@
             android:layout_height="wrap_content"
             android:text="Рюкзаков: —" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/get_information"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/info_fragment_getInformation" />
 
 </LinearLayout>

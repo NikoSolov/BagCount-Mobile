@@ -24,6 +24,7 @@ import okhttp3.ResponseBody
 import retrofit2.Response
 import java.io.File
 import java.io.FileOutputStream
+import androidx.core.content.edit
 
 class InfoFragment : Fragment(R.layout.fragment_info) {
 
@@ -34,7 +35,6 @@ class InfoFragment : Fragment(R.layout.fragment_info) {
     private lateinit var infoBlock: LinearLayout
 
     private lateinit var handbagsTv: TextView
-    private lateinit var bagsTv: TextView
     private lateinit var suitcasesTv: TextView
     private lateinit var backpacksTv: TextView
 
@@ -72,7 +72,7 @@ class InfoFragment : Fragment(R.layout.fragment_info) {
             val filename = prefs.getString(KEY_LAST_FILENAME, null)
             if (code.isNullOrBlank() || filename.isNullOrBlank()) {
                 Toast.makeText(requireContext(),
-                    "Нет предыдущей отправки",
+                    getString(R.string.info_toast_noLastUpload),
                     Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -88,22 +88,21 @@ class InfoFragment : Fragment(R.layout.fragment_info) {
                         if (stats.status == "Scanning still going") {
                             withContext(Dispatchers.Main) {
                                 Toast.makeText(requireContext(),
-                                    "Файл ещё обрабатывается на сервере",
+                                    getString(R.string.info_toast_stillScanning),
                                     Toast.LENGTH_SHORT).show()
                             }
                             return@launch
                         }
                         withContext(Dispatchers.Main) {
                             infoBlock.visibility = View.VISIBLE
-                            handbagsTv.text    = "Сумок: ${stats.handbags}"
-//                            bagsTv.text        = "Сумок: ${stats.bags}"
-                            suitcasesTv.text   = "Чемоданов: ${stats.suitcases}"
-                            backpacksTv.text   = "Рюкзаков: ${stats.backpacks}"
+                            handbagsTv.text    = "${getString(R.string.info_fragment_handbagCount)}: ${stats.handbags}"
+                            suitcasesTv.text   = "${getString(R.string.info_fragment_suitcaseCount)}: ${stats.suitcases}"
+                            backpacksTv.text   = "${getString(R.string.info_fragment_backpackCount)}: ${stats.backpacks}"
                         }
                     } else {
                         withContext(Dispatchers.Main) {
                             Toast.makeText(requireContext(),
-                                "Ошибка получения статистики: ${statusResp.code()}",
+                                "${getString(R.string.info_toast_errorStatus)}: ${statusResp.code()}",
                                 Toast.LENGTH_SHORT).show()
                         }
                         return@launch
@@ -116,7 +115,7 @@ class InfoFragment : Fragment(R.layout.fragment_info) {
                         val outFile = File(requireContext().cacheDir, filename)
                         FileOutputStream(outFile).use { it.write(body.bytes()) }
                         // Сохраняем путь
-                        prefs.edit().putString(KEY_LAST_PATH, outFile.absolutePath).apply()
+                        prefs.edit() { putString(KEY_LAST_PATH, outFile.absolutePath) }
                         // И обновляем превью сразу же
                         withContext(Dispatchers.Main) {
                             showFileInView(outFile, filename)
@@ -124,7 +123,7 @@ class InfoFragment : Fragment(R.layout.fragment_info) {
                     } else {
                         withContext(Dispatchers.Main) {
                             Toast.makeText(requireContext(),
-                                "Ошибка скачивания файла: ${dlResp.code()}",
+                                "${getString(R.string.info_toast_errorDownload)}: ${dlResp.code()}",
                                 Toast.LENGTH_SHORT).show()
                         }
                     }
@@ -132,7 +131,7 @@ class InfoFragment : Fragment(R.layout.fragment_info) {
                     t.printStackTrace()
                     withContext(Dispatchers.Main) {
                         Toast.makeText(requireContext(),
-                            "Неполадки с подключением",
+                            getString(R.string.info_toast_errorConnection),
                             Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -144,14 +143,18 @@ class InfoFragment : Fragment(R.layout.fragment_info) {
         val filename = prefs.getString(KEY_LAST_FILENAME, null)
         val path     = prefs.getString(KEY_LAST_PATH, null)
         if (filename.isNullOrBlank() || path.isNullOrBlank()) {
-            Toast.makeText(requireContext(), "Нет предыдущей отправки", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.info_toast_noLastUpload), Toast.LENGTH_SHORT).show()
             return
         }
+        val isVideo = filename.lowercase().endsWith(".mp4")
+        if (isVideo)
+            fileNameTv.text = "${getString(R.string.info_video)}: ${filename.substringAfter(":")}"
+        else
+            fileNameTv.text = "${getString(R.string.info_photo)}: ${filename.substringAfter(":")}"
 
-        fileNameTv.text = filename
         val file = File(path)
         if (!file.exists()) {
-            Toast.makeText(requireContext(), "Локальный файл не найден", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.info_toast_noLocalFile), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -159,7 +162,6 @@ class InfoFragment : Fragment(R.layout.fragment_info) {
         previewVideo.visibility = View.GONE
         previewImage.visibility = View.GONE
 
-        val isVideo = filename.lowercase().endsWith(".mp4")
         if (isVideo) {
             // VideoView
             previewVideo.visibility = View.VISIBLE
@@ -183,7 +185,7 @@ class InfoFragment : Fragment(R.layout.fragment_info) {
             }
             previewVideo.setOnErrorListener { _, what, extra ->
                 Toast.makeText(requireContext(),
-                    "Ошибка воспроизведения (code=$what, extra=$extra)",
+                    "${getString(R.string.info_toast_errorPlay)} (code=$what, extra=$extra)",
                     Toast.LENGTH_LONG).show()
                 true
             }
@@ -215,8 +217,12 @@ class InfoFragment : Fragment(R.layout.fragment_info) {
     }
 
     private fun showFileInView(file: File, filename: String) {
-        fileNameTv.text = filename
         val isVideo = filename.lowercase().endsWith(".mp4")
+        if (isVideo)
+            fileNameTv.text = "${getString(R.string.info_video)}: ${filename.substringAfter(":")}"
+        else
+            fileNameTv.text = "${getString(R.string.info_photo)}: ${filename.substringAfter(":")}"
+
 
         previewVideo.stopPlayback()
         previewVideo.visibility = View.GONE
@@ -248,7 +254,7 @@ class InfoFragment : Fragment(R.layout.fragment_info) {
             }
             previewVideo.setOnErrorListener { _, what, extra ->
                 Toast.makeText(requireContext(),
-                    "Ошибка воспроизведения (code=$what, extra=$extra)",
+                    "${getString(R.string.info_toast_errorPlay)} (code=$what, extra=$extra)",
                     Toast.LENGTH_LONG).show()
                 true
             }

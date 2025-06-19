@@ -13,7 +13,7 @@
     <string name="info_fragment_backpackCount">Number of Backpacks</string>
     <string name="settings_app_language">App language</string>
     <string name="settings_current_language" translatable="false">Русский</string>
-    <string name="settings_maxVideoLength">Max Video Length</string>
+    <string name="settings_maxVideoLength">Max video length in seconds</string>
     <string name="settings_seconds">seconds</string>
     <string name="settings_reset">Reset settings</string>
     <string name="settings_resetDescription">Reset all settings to default</string>
@@ -21,4 +21,28 @@
     <string name="scan_fragment_recordVideo">Record a Video</string>
     <string name="scan_fragment_uploadFile">Upload a File</string>
     <string name="scan_fragment_takePhoto">Take a Photo</string>
+    <string name="settings_insert_ip">Insert IP-address</string>
+    <string name="settings_apply">Apply</string>
+    <string name="settings_cancel">Cancel</string>
+    <string name="info_toast_noLastUpload">No last upload</string>
+    <string name="info_toast_stillScanning">Mediafile still processing on server</string>
+    <string name="info_toast_errorStatus">Problem in getting information</string>
+    <string name="info_toast_errorDownload">Problem in downloading a file from server</string>
+    <string name="info_toast_errorConnection">Problem in connection to server</string>
+    <string name="info_toast_noLocalFile">Local file has not been found</string>
+    <string name="info_toast_errorPlay">Problem in playing video</string>
+    <string name="scan_toast_fileNotChosen">File has not been choosed</string>
+    <string name="scan_toast_cancelVideo">Video record canceled</string>
+    <string name="scan_toast_cancelImage">Photo taking canceled</string>
+    <string name="scan_toast_getCameraAccess">Please provide access to the camera</string>
+    <string name="scan_toast_errorCode">Problem of abtaining access code</string>
+    <string name="scan_toast_errorServer">Server is not accessible</string>
+    <string name="scan_toast_errorFile">Problem with reading the file</string>
+    <string name="scan_toast_uploadedImage">Image has been uploaded</string>
+    <string name="scan_toast_uploadedVideo">Video has been uploaded</string>
+    <string name="scan_toast_errorUpload">Problem with uploading file</string>
+    <string name="scan_toast_errorNet">Problem with internet connection</string>
+    <string name="info_video">Video</string>
+    <string name="info_photo">Photo</string>
+    <string name="scan_toast_videoLimits">Video length exceeds limits</string>
 </resources>

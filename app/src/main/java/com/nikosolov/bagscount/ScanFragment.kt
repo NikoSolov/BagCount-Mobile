@@ -24,6 +24,7 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
+import androidx.core.content.edit
 
 class ScanFragment : Fragment(R.layout.fragment_scan) {
     private lateinit var takePhotoLauncher: androidx.activity.result.ActivityResultLauncher<Uri>
@@ -46,7 +47,7 @@ class ScanFragment : Fragment(R.layout.fragment_scan) {
                 enableCameraButtons(true)
             } else {
                 Toast.makeText(requireContext(),
-                    "Без доступа к камере функция съёмки недоступна",
+                    getString(R.string.scan_toast_getCameraAccess),
                     Toast.LENGTH_LONG).show()
                 enableCameraButtons(false)
             }
@@ -78,7 +79,7 @@ class ScanFragment : Fragment(R.layout.fragment_scan) {
                     uploadMedia(currentOutputUri!!, isVideo = false)
                 }
             } else {
-                showToast("Фото отменено")
+                showToast(getString(R.string.scan_toast_cancelImage))
             }
         }
 
@@ -90,7 +91,7 @@ class ScanFragment : Fragment(R.layout.fragment_scan) {
                     uploadMedia(currentOutputUri!!, isVideo = true)
                 }
             } else {
-                showToast("Видео отменено")
+                showToast(getString(R.string.scan_toast_cancelVideo))
             }
         }
 
@@ -108,7 +109,7 @@ class ScanFragment : Fragment(R.layout.fragment_scan) {
                     uploadMedia(uri, isVideo)
                 }
             } else {
-                showToast("Файл не выбран")
+                showToast(getString(R.string.scan_toast_fileNotChosen))
             }
         }
 
@@ -170,7 +171,7 @@ class ScanFragment : Fragment(R.layout.fragment_scan) {
             )?.toLongOrNull() ?: 0L
             retriever.release()
             if (durationMs / 1000 > maxLen) {
-                showToast("Длина видео ${durationMs / 1000}s > $maxLen s")
+                showToast("${getString(R.string.scan_toast_videoLimits)}\n${durationMs / 1000} > $maxLen")
                 return
             }
         }
@@ -178,21 +179,21 @@ class ScanFragment : Fragment(R.layout.fragment_scan) {
         val code = try {
             val resp = apiService.getAccessCode()
             if (!resp.isSuccessful || resp.body() == null) {
-                showToast("Ошибка получения кода: ${resp.code()}")
+                showToast("${getString(R.string.scan_toast_errorCode)}: ${resp.code()}")
                 return
             }
             resp.body()!!.code.also {
-                prefs.edit().putString(KEY_LAST_CODE, it).apply()
+                prefs.edit() { putString(KEY_LAST_CODE, it) }
             }
         } catch (e: Exception) {
-            showToast("Сервер недоступен")
+            showToast(getString(R.string.scan_toast_errorServer))
             return
         }
 
         val resolver = requireContext().contentResolver
         val bytes = resolver.openInputStream(uri)?.use { it.readBytes() }
         if (bytes == null) {
-            showToast("Не удалось прочитать файл")
+            showToast(getString(R.string.scan_toast_errorFile))
             return
         }
 
@@ -218,24 +219,24 @@ class ScanFragment : Fragment(R.layout.fragment_scan) {
                 apiService.uploadImage(code, part)
 
             if (resp.isSuccessful) {
-                showToast(if (isVideo) "Видео отправлено" else "Фото отправлено")
+                showToast(if (isVideo) getString(R.string.scan_toast_uploadedVideo) else getString(R.string.scan_toast_uploadedImage))
 
                 val cacheFile = File(requireContext().cacheDir, filename)
                 cacheFile.outputStream().use { it.write(bytes) }
-                prefs.edit()
-                    .putString(KEY_LAST_FILENAME, filename)
-                    .putString(KEY_LAST_PATH, cacheFile.absolutePath)
-                    .apply()
+                prefs.edit() {
+                    putString(KEY_LAST_FILENAME, filename)
+                        .putString(KEY_LAST_PATH, cacheFile.absolutePath)
+                }
                 requireActivity().runOnUiThread {
                     parentFragmentManager.beginTransaction()
                         .replace(R.id.fragment_container, InfoFragment())
                         .commit()
                 }
             } else {
-                showToast("Ошибка загрузки: ${resp.code()}")
+                showToast("${getString(R.string.scan_toast_errorUpload)}: ${resp.code()}")
             }
         } catch (e: Exception) {
-            showToast("Ошибка сети")
+            showToast(getString(R.string.scan_toast_errorNet))
         }
     }
 

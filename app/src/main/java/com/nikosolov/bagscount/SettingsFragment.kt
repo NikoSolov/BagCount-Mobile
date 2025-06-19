@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.nikosolov.bagscount.R
 import com.google.android.material.textfield.TextInputEditText
+import androidx.core.content.edit
 
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
@@ -78,16 +79,16 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         }
 
         AlertDialog.Builder(requireContext())
-            .setTitle("Введите IP-адрес")
+            .setTitle(getString(R.string.settings_insert_ip))
             .setView(edit)
-            .setPositiveButton("OK") { dialog, _ ->
+            .setPositiveButton(getString(R.string.settings_apply)) { dialog, _ ->
                 val input = edit.text.toString().trim()
                 val ip = if (input.isBlank()) DEFAULT_IP else input
-                prefs.edit().putString(KEY_IP, ip).apply()
+                prefs.edit() { putString(KEY_IP, ip) }
                 updateDisplayedIp()
                 dialog.dismiss()
             }
-            .setNegativeButton("Отмена") { dialog, _ ->
+            .setNegativeButton(getString(R.string.settings_cancel)) { dialog, _ ->
                 dialog.dismiss()
             }
             .show()
@@ -95,7 +96,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
     private fun updateDisplayedMaxLength() {
         val len = prefs.getInt(KEY_MAX_LENGTH, DEFAULT_MAX_LENGTH)
-        tvMaxLength.text = "$len сек."
+        tvMaxLength.text = "$len"
     }
 
     private fun showMaxLengthDialog() {
@@ -108,16 +109,16 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         }
 
         AlertDialog.Builder(requireContext())
-            .setTitle("Максимальная длина видео (сек)")
+            .setTitle(getString(R.string.settings_maxVideoLength))
             .setView(edit)
-            .setPositiveButton("OK") { dialog, _ ->
+            .setPositiveButton(getString(R.string.settings_apply)) { dialog, _ ->
                 val input = edit.text.toString().toIntOrNull()
                 val len = input?.takeIf { it > 0 } ?: DEFAULT_MAX_LENGTH
-                prefs.edit().putInt(KEY_MAX_LENGTH, len).apply()
+                prefs.edit() { putInt(KEY_MAX_LENGTH, len) }
                 updateDisplayedMaxLength()
                 dialog.dismiss()
             }
-            .setNegativeButton("Отмена") { dialog, _ ->
+            .setNegativeButton(getString(R.string.settings_cancel)) { dialog, _ ->
                 dialog.dismiss()
             }
             .show()

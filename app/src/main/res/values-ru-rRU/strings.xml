@@ -12,7 +12,7 @@
     <string name="info_fragment_suitcaseCount">Количество чемоданов</string>
     <string name="info_fragment_backpackCount">Количество рюкзаков</string>
     <string name="settings_app_language">Язык интерфейса</string>
-    <string name="settings_maxVideoLength">Максимальная длина видео</string>
+    <string name="settings_maxVideoLength">Максимальная длина видео в секундах</string>
     <string name="settings_seconds">секунд</string>
     <string name="settings_reset">Сброс настроек</string>
     <string name="settings_resetDescription">Сбросить все настройки на их значения по умолчанию</string>
@@ -20,4 +20,28 @@
     <string name="scan_fragment_recordVideo">Записать видео</string>
     <string name="scan_fragment_uploadFile">Загрузить файл</string>
     <string name="scan_fragment_takePhoto">Сделать фото</string>
+    <string name="settings_insert_ip">Введите IP-адрес</string>
+    <string name="settings_apply">Применить</string>
+    <string name="settings_cancel">Отмена</string>
+    <string name="info_toast_noLastUpload">Нет предыдущей отправки</string>
+    <string name="info_toast_stillScanning">Файл ещё обрабатывается на сервере</string>
+    <string name="info_toast_errorStatus">Ошибка получения статистики</string>
+    <string name="info_toast_errorDownload">Ошибка скачивания файла</string>
+    <string name="info_toast_errorConnection">Неполадки с подключением</string>
+    <string name="info_toast_noLocalFile">Локальный файл не найден</string>
+    <string name="info_toast_errorPlay">Ошибка воспроизведения видео</string>
+    <string name="scan_toast_fileNotChosen">Файл не выбран</string>
+    <string name="scan_toast_cancelVideo">Запись видео отменена</string>
+    <string name="scan_toast_cancelImage">Запись фото отменена</string>
+    <string name="scan_toast_getCameraAccess">Пожалуйста, предоставьте доступ к камере</string>
+    <string name="scan_toast_errorCode">Ошибка получения кода доступа</string>
+    <string name="scan_toast_errorServer">Сервер недоступен</string>
+    <string name="scan_toast_errorFile">Не удалось прочитать файл</string>
+    <string name="scan_toast_uploadedImage">Фото отправлено</string>
+    <string name="scan_toast_uploadedVideo">Видео отправлено</string>
+    <string name="scan_toast_errorUpload">Ошибка выгрузки файла</string>
+    <string name="scan_toast_errorNet">Ошибка сети</string>
+    <string name="info_video">Видео</string>
+    <string name="info_photo">Фото</string>
+    <string name="scan_toast_videoLimits">Длительность видео превышает ограничения</string>
 </resources>
