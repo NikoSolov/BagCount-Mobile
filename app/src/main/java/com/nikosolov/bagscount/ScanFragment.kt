@@ -25,6 +25,7 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 import androidx.core.content.edit
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ScanFragment : Fragment(R.layout.fragment_scan) {
     private lateinit var takePhotoLauncher: androidx.activity.result.ActivityResultLauncher<Uri>
@@ -228,9 +229,9 @@ class ScanFragment : Fragment(R.layout.fragment_scan) {
                         .putString(KEY_LAST_PATH, cacheFile.absolutePath)
                 }
                 requireActivity().runOnUiThread {
-                    parentFragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, InfoFragment())
-                        .commit()
+                    requireActivity()
+                        .findViewById<BottomNavigationView>(R.id.bottom_navigation)
+                        .selectedItemId = R.id.infoFragment
                 }
             } else {
                 showToast("${getString(R.string.scan_toast_errorUpload)}: ${resp.code()}")

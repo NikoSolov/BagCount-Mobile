@@ -3,25 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/graph"
-    app:startDestination="@id/mainActivity">
+    app:startDestination="@id/scanFragment">
 
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="com.nikosolov.bagscount.MainActivity"
-        android:label="MainActivity" />
     <fragment
-        android:id="@+id/historyFragment"
-        android:name="com.nikosolov.bagscount.InfoFragment"
-        android:label="fragment_history"
+        android:id="@+id/infoFragment"
+        android:name="com.nikosolov.bagscount.fragments.InfoFragment"
+        android:label="fragment_info"
         tools:layout="@layout/fragment_info" />
     <fragment
         android:id="@+id/scanFragment"
-        android:name="com.nikosolov.bagscount.ScanFragment"
+        android:name="com.nikosolov.bagscount.fragments.ScanFragment"
         android:label="fragment_scan"
-        tools:layout="@layout/fragment_scan" />
+        tools:layout="@layout/fragment_scan">
+        <action
+            android:id="@+id/action_scanFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.nikosolov.bagscount.SettingsFragment"
+        android:name="com.nikosolov.bagscount.fragments.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
 </navigation>
