@@ -29,7 +29,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ScanFragment : Fragment(R.layout.fragment_scan) {
     private lateinit var takePhotoLauncher: androidx.activity.result.ActivityResultLauncher<Uri>
-    private lateinit var takeVideoLauncher: androidx.activity.result.ActivityResultLauncher<Uri>
+    private lateinit var takeVideoLauncher: androidx.activity.result.ActivityResultLauncher<Intent>
     private lateinit var pickMediaLauncher: androidx.activity.result.ActivityResultLauncher<Array<String>>
     private lateinit var apiService: ImageUploadService
 
@@ -85,11 +85,12 @@ class ScanFragment : Fragment(R.layout.fragment_scan) {
         }
 
         takeVideoLauncher = registerForActivityResult(
-            ActivityResultContracts.CaptureVideo()
-        ) { success ->
-            if (success && currentOutputUri != null) {
+            ActivityResultContracts.StartActivityForResult()
+        ) { result ->
+            val uri = currentOutputUri
+            if (result.resultCode == android.app.Activity.RESULT_OK && uri != null) {
                 lifecycleScope.launch(Dispatchers.IO) {
-                    uploadMedia(currentOutputUri!!, isVideo = true)
+                    uploadMedia(uri, isVideo = true)
                 }
             } else {
                 showToast(getString(R.string.scan_toast_cancelVideo))
@@ -126,12 +127,17 @@ class ScanFragment : Fragment(R.layout.fragment_scan) {
 
         btnCaptureVideo.setOnClickListener {
             val videoFile = createTempFile("video_", ".mp4")
+            val maxLen = prefs.getInt(KEY_MAX_LENGTH, DEFAULT_MAX_LENGTH)
             currentOutputUri = FileProvider.getUriForFile(
                 requireContext(),
                 "${requireContext().packageName}.provider",
                 videoFile
             )
-            takeVideoLauncher.launch(currentOutputUri)
+            val intent = Intent(android.provider.MediaStore.ACTION_VIDEO_CAPTURE).apply {
+                putExtra(android.provider.MediaStore.EXTRA_OUTPUT, currentOutputUri)
+                putExtra(android.provider.MediaStore.EXTRA_DURATION_LIMIT, maxLen) // 60 секунд
+            }
+            takeVideoLauncher.launch(intent)
         }
 
         btnUpload.setOnClickListener {
