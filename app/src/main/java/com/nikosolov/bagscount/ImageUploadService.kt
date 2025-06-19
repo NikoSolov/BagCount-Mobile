@@ -11,14 +11,11 @@ data class CodeResponse(
 
 data class StatusResponse(
     val status: String          = "N/A",
-//    val bags: String            = "0",
     val handbags: String        = "0",
     val suitcases: String       = "0",
     val backpacks: String       = "0"
 )
 
-data class ImageListResponse(val images: List<String> = emptyList())
-data class VideoListResponse(val videos: List<String> = emptyList())
 
 interface ImageUploadService {
 
@@ -48,11 +45,4 @@ interface ImageUploadService {
     // 4. Получить статус (списки + конкретные поля)
     @GET("/{code}")
     suspend fun getStatus(@Path("code") code: String): Response<StatusResponse>
-
-    // Опционально: отдельные списки
-    @GET("/{code}/image")
-    suspend fun getImageInfo(@Path("code") code: String): Response<ImageListResponse>
-
-    @GET("/{code}/video")
-    suspend fun getVideoInfo(@Path("code") code: String): Response<VideoListResponse>
 }
