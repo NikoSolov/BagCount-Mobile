@@ -20,9 +20,11 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.fragment_container, ScanFragment())
             .commit()
 
+        nav.selectedItemId = R.id.nav_scan
+
         nav.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.nav_history -> {
+                R.id.nav_info -> {
                     replaceFragment(InfoFragment())
                     true
                 }

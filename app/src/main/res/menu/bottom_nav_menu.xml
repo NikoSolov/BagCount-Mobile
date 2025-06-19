@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/nav_history"
-        android:icon="@android:drawable/ic_menu_info_details"
+        android:id="@+id/nav_info"
+        android:icon="@drawable/ic_info"
         android:title="@string/bottom_menu_info"/>
     <item
         android:id="@+id/nav_scan"
-        android:icon="@android:drawable/ic_menu_search"
+        android:icon="@drawable/ic_scan"
         android:title="@string/bottom_menu_scan"/>
     <item
         android:id="@+id/nav_settings"
-        android:icon="@android:drawable/ic_menu_manage"
+        android:icon="@drawable/ic_settings"
         android:title="@string/bottom_menu_settings"/>
 </menu>

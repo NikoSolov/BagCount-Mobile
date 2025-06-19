@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:id="@+id/controls_container"
@@ -24,7 +25,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="4"
                 android:adjustViewBounds="true"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
+                app:tint="?attr/scanButtonColor"
                 android:src="@drawable/take_photo" />
 
             <TextView
@@ -32,9 +34,9 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="14sp"
+                android:textSize="@dimen/buttonTextSize"
                 android:text="@string/scan_fragment_takePhoto"
-                android:textColor="@android:color/black"
+                android:textColor="?attr/scanButtonTextColor"
                 android:textAppearance="?attr/textAppearanceBody1" />
         </LinearLayout>
 
@@ -52,7 +54,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="4"
                 android:adjustViewBounds="true"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
+                app:tint="?attr/scanButtonColor"
                 android:src="@drawable/take_video" />
 
             <TextView
@@ -60,9 +63,9 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="14sp"
+                android:textSize="@dimen/buttonTextSize"
                 android:text="@string/scan_fragment_recordVideo"
-                android:textColor="@android:color/black"
+                android:textColor="?attr/scanButtonTextColor"
                 android:textAppearance="?attr/textAppearanceBody1" />
         </LinearLayout>
 
@@ -80,7 +83,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="4"
                 android:adjustViewBounds="true"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
+                app:tint="?attr/scanButtonColor"
                 android:src="@drawable/upload_file" />
 
             <TextView
@@ -88,9 +92,9 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="14sp"
+                android:textSize="@dimen/buttonTextSize"
                 android:text="@string/scan_fragment_uploadFile"
-                android:textColor="@android:color/black"
+                android:textColor="?attr/scanButtonTextColor"
                 android:textAppearance="?attr/textAppearanceBody1" />
         </LinearLayout>
 

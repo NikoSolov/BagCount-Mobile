@@ -40,6 +40,9 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     // Lifecycle
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    // Material Theme
+    implementation(libs.material3)
+    implementation(libs.material)
     // Compose
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))

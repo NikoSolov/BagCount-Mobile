@@ -1,25 +1,38 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
-<!--    <style name="Theme.BagsCount" parent="Theme.MaterialComponents.DayNight.DarkActionBar">-->
-    <style name="Theme.BagsCount" parent="Theme.AppCompat.DayNight">
-        <!-- Primary brand color. -->
-<!--        <item name="colorPrimary">@color/purple_500</item>-->
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+    <style name="Theme.BagsCount" parent="Theme.Material3.Light">
+        <!-- ==================== Scan Fragment ====================== -->
+        <!-- Цвет кнопок в фрагменте сканирования -->
+        <item name="scanButtonColor">@color/black</item>
+        <!-- Цвет текста кнопки-->
+        <item name="scanButtonTextColor">@color/colorTextPrimary</item>
+        <!-- Явное указание для ActionBar -->
+        <item name="actionBarStyle">@style/CustomActionBar</item>
+
+        <!-- ==================== Info Fragment ====================== -->
+        <!-- Цвет кнопки -->
+        <item name="colorPrimary">@color/lightPrimary</item>
+        <!-- Цвет текста кнопки -->
         <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
 
-        <!-- Цвета -->
-        <item name="colorPrimary">@color/white</item>
-
-        <!-- Для Compose -->
-        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
-
+        <!-- ==================== Bottom Navigation ====================== -->
+        <!-- Фон -->
+        <item name="bottomNavBackground">@color/lightNavBackground</item>
+        <!-- Активная иконка -->
+        <item name="bottomNavActiveIcon">@color/black</item>
+        <!-- Неактивная иконка -->
+        <item name="bottomNavInactiveIcon">@color/colorDisabled</item>
+        <!-- Текст иконки -->
+        <item name="bottomNavText">@color/colorTextPrimary</item>
 
     </style>
+
+    <style name="CustomActionBar" parent="@style/Widget.Material3.ActionBar.Solid">
+        <item name="background">@color/lightPrimary</item> <!-- Цвет ActionBar -->
+        <item name="titleTextStyle">@style/ActionBarTitleText</item>
+    </style>
+    <style name="ActionBarTitleText" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textColor">@color/white</item> <!-- Цвет заголовка -->
+    </style>
+
 </resources>

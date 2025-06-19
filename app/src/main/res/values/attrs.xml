@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="scanButtonColor" format="color" />
+    <attr name="scanButtonTextColor" format="color" />
+    <attr name="bottomNavBackground" format="color" />
+    <attr name="bottomNavActiveIcon" format="color" />
+    <attr name="bottomNavInactiveIcon" format="color" />
+    <attr name="bottomNavText" format="color" />
+</resources>
