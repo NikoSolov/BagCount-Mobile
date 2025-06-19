@@ -28,7 +28,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         private const val KEY_MAX_LENGTH = "video_max_length"
 
         private const val DEFAULT_IP = "127.0.0.1"
-        private const val DEFAULT_MAX_LENGTH = 60
+        private const val DEFAULT_MAX_LENGTH = 5
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

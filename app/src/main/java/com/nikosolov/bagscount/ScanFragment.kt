@@ -59,7 +59,7 @@ class ScanFragment : Fragment(R.layout.fragment_scan) {
         private const val KEY_LAST_CODE     = "last_code"
         private const val KEY_LAST_PATH     = "last_filepath"
         private const val KEY_MAX_LENGTH    = "video_max_length"
-        private const val DEFAULT_MAX_LENGTH = 60
+        private const val DEFAULT_MAX_LENGTH = 5
     }
 
     override fun onViewCreated(view: android.view.View, savedInstanceState: Bundle?) {

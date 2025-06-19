@@ -179,7 +179,7 @@ class InfoFragment : Fragment(R.layout.fragment_info) {
             mc.setAnchorView(previewVideo)
             previewVideo.setMediaController(mc)
             previewVideo.setOnPreparedListener {
-                it.isLooping = false
+                it.isLooping = true
                 previewVideo.seekTo(1)
                 previewVideo.start()
             }
@@ -248,7 +248,7 @@ class InfoFragment : Fragment(R.layout.fragment_info) {
             mc.setAnchorView(previewVideo)
             previewVideo.setMediaController(mc)
             previewVideo.setOnPreparedListener {
-                it.isLooping = false
+                it.isLooping = true
                 previewVideo.seekTo(1)
                 previewVideo.start()
             }
