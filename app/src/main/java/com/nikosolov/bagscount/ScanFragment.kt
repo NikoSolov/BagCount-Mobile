@@ -135,7 +135,7 @@ class ScanFragment : Fragment(R.layout.fragment_scan) {
             )
             val intent = Intent(android.provider.MediaStore.ACTION_VIDEO_CAPTURE).apply {
                 putExtra(android.provider.MediaStore.EXTRA_OUTPUT, currentOutputUri)
-                putExtra(android.provider.MediaStore.EXTRA_DURATION_LIMIT, maxLen) // 60 секунд
+                putExtra(android.provider.MediaStore.EXTRA_DURATION_LIMIT, maxLen)
             }
             takeVideoLauncher.launch(intent)
         }
