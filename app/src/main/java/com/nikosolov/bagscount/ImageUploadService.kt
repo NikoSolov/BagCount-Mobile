@@ -5,18 +5,6 @@ import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.*
 
-data class CodeResponse(
-    val code: String
-)
-
-data class StatusResponse(
-    val status: String          = "N/A",
-    val handbags: String        = "0",
-    val suitcases: String       = "0",
-    val backpacks: String       = "0"
-)
-
-
 interface ImageUploadService {
 
     // 1. Получить код доступа
